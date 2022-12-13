@@ -50,6 +50,12 @@ public class Project {
 	public static void BookedItinerary(WebDriver driver) {
 		driver.findElement(By.xpath("//a[text()='Booked Itinerary']")).click();
     }
+    public static void screenShot(WebDriver driver) throws IOException {
+		TakesScreenshot ts=(TakesScreenshot) driver;
+		File src=ts.getScreenshotAs(OutputType.FILE);
+		File des=new File("C:\\Users\\Ganesh\\eclipse-workspace\\SeleniumCode\\Seleniumdemo\\ScreenShot\\project!.png");
+		FileHandler.copy(src, des);
+		}
 	
 	public static void main(String[] args) throws IOException, InterruptedException {
 		System.setProperty("webdriver.chrome.driver",
