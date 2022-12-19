@@ -14,6 +14,12 @@ public class Project {
 		Select selectLocation=new Select(location);
 		selectLocation.selectByVisibleText("Los Angeles");
     }
+     public static void screenShot1(WebDriver driver) throws IOException {
+		TakesScreenshot ts=(TakesScreenshot) driver;
+		File src=ts.getScreenshotAs(OutputType.FILE);
+		File des=new File("C:\\Users\\Ganesh\\eclipse-workspace\\SeleniumCode\\Seleniumdemo\\ScreenShot\\project.png");
+		FileHandler.copy(src, des);
+		}
 	public static void hotels(WebDriver driver) {
 		WebElement hotels = driver.findElement(By.id("hotels"));
 		Select hotel=new Select(hotels);
@@ -61,7 +67,8 @@ public class Project {
 		System.setProperty("webdriver.chrome.driver",
 				"C:\\Users\\Ganesh\\eclipse-workspace\\SeleniumCode\\MiniProject\\ChromeDriver\\chromedriver.exe");
 		WebDriver driver=new ChromeDriver();
-		driver.get("https://adactinhotelapp.com/"); 
+		driver.get("https://adactinhotelapp.com/");
+		Project.screenShot1(driver);
 		LoginDetails.login(driver);
 		Project.location(driver);
 		Project.hotels(driver);
